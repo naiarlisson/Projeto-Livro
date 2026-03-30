@@ -52,3 +52,25 @@ adicionarLivro({
 });
 
 listarLivros();
+
+// Função 3: emprestar livro
+function emprestarLivro(id: number): void {
+  const livro = livros.find((l) => l.id === id);
+
+  if (!livro) {
+    console.log(`Livro com ID ${id} não encontrado.`);
+    return;
+  }
+
+  if (!livro.disponivel) {
+    console.log(`O livro "${livro.titulo}" já está emprestado.`);
+    return;
+  }
+
+  livro.disponivel = false;
+  console.log(`Livro "${livro.titulo}" emprestado com sucesso!`);
+}
+
+// Teste
+emprestarLivro(1);
+listarLivros();
